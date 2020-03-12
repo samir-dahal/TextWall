@@ -35,7 +35,13 @@ $('#save').onclick = function () {
     })
     $('#download').disabled = false;
 }
-
+$('#preview').onclick = function () {
+    //preview current img
+    html2canvas(BG, { x: BG.offsetLeft, y: BG.offsetTop }).then((canvas) => {
+        $('.preview').style.display = null;
+        $('#canvas').appendChild(canvas);
+    })
+}
 //font size
 $('#fontSlider').oninput = function () {
     $('#download').disabled = true;
@@ -62,7 +68,17 @@ $('.color-default').onclick = function () {
 //fontfamily
 const fontList = $('#fontFamily');
 fontList.oninput = function () {
+    $('#download').disabled = true;
     const fontFamily = fontList.options[fontList.selectedIndex].value;
     quotes.style.fontFamily = fontFamily;
     name.style.fontFamily = fontFamily;
+}
+//letterspacing
+$('#letterSpacing').oninput = function () {
+    quotes.style.letterSpacing = this.value + 'px';
+}
+//fontweight
+const fontWeightList = $('#fontWeightList');
+fontWeightList.oninput = function () {
+    quotes.style.fontWeight = this.options[this.selectedIndex].value;
 }

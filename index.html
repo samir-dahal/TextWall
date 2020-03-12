@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Wallpaper</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="css/colorPicker.css"> -->
     <link rel="stylesheet" href="css/style.css">
 </head>
 
@@ -19,19 +20,43 @@
         </div>
         <button class="btn btn-success" id="generate" disabled>Generate</button>
     </div>
+    <div id="canvas" class="container">
+        <span class="preview" style="display:none">Preview:</span>
+    </div>
     <div class="container">
-        <span>Font Size: </span><input type="range" id="fontSlider" min="20" max="50" step="0.01" value="20"><br><br>
-        <label for="fontFamily">Choose a font:</label>
+        <span>Font Size: </span>
+        <input type="range" id="fontSlider" min="20" max="50" step="0.01" value="20"><br><br>
 
+        <span>Letter Spacing: </span>
+        <input type="range" id="letterSpacing" min="0" max="5" step="0.01" value="0"><br><br>
+
+        <span>Font Weight: </span>
+        <select id="fontWeightList">
+            <option value="normal">Normal</option>
+            <option value="bold">Bold</option>
+            <option value="lighter">Lighter</option>
+        </select><br><br>
+
+        <label for="fontFamily">Choose a font:</label>
         <select id="fontFamily">
             <option value="Arial, sans-serif">Arial, sans-serif;</option>
             <option value="Arial Narrow, sans-serif">Arial Narrow, sans-serif</option>
             <option value="Andale Mono, monospace">Andale Mono, monospace</option>
             <option value="Luminari, fantasy">Luminari, fantasy</option>
             <option value="OCR A Std, monospace">OCR A Std, monospace</option>
-            <option value="Questrial">Questrial</option>
             <option value="Andale Mono, monospace">Andale Mono, monospace</option>
         </select>
+        <p><b>Please, save the changes before downloading :)</b></p>
+
+        <!--color picker html-->
+        <!-- <div id="colors">
+            <input class="inp" type="range" id="inp1" min="0" max="360" value="331" draggable="false">
+            <input class="inp" type="range" id="inp2" min="0" max="100" value="100" draggable="false">
+            <input class="inp" type="range" id="inp3" min="0" max="100" value="50" draggable="false">
+            <p id="rgb">rgb(255, 255, 255)</p>
+            <p id="hex">#ffffff</p>
+        </div> -->
+        <!--===================-->
         <div class="bg">
             <h3 id="quotes">Hello! How are you today?</h3>
             <p id="name" class="text-center">Unknown</p>
@@ -40,12 +65,14 @@
         <a href="" download="quote.png">
             <button class="btn btn-success" id="download" disabled>Download</button>
         </a>
+        <button class="btn btn-secondary" id="preview">Preview</button>
         <button class="btn btn-warning" id="save">Save</button><br><br>
         <button class="btn btn-secondary color-white">Color White</button>
         <button class="btn btn-primary color-default">Color Default</button><br><br>
     </div>
 
     <script src="js/html2canvas.js"></script>
+    <!-- <script src="js/colorPicker.js"></script> -->
     <script src="js/app.js"></script>
 </body>
 

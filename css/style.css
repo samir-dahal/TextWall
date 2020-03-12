@@ -1,5 +1,6 @@
 textarea {
     width: 100%;
+    resize: none;
 }
 
 .container {
@@ -18,4 +19,8 @@ textarea {
 
 a {
     text-decoration: none;
+}
+
+#canvas {
+    border: 2px solid green;
 }
