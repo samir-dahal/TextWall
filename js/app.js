@@ -37,6 +37,7 @@ $('#save').onclick = function () {
 }
 $('#preview').onclick = function () {
     //preview current img
+    scrollTo(0, $('#canvas').offsetTop);
     html2canvas(BG, { x: BG.offsetLeft, y: BG.offsetTop }).then((canvas) => {
         $('.preview').style.display = null;
         $('#canvas').appendChild(canvas);
@@ -76,9 +77,11 @@ fontList.oninput = function () {
 //letterspacing
 $('#letterSpacing').oninput = function () {
     quotes.style.letterSpacing = this.value + 'px';
+    $('#download').disabled = true;
 }
 //fontweight
 const fontWeightList = $('#fontWeightList');
 fontWeightList.oninput = function () {
     quotes.style.fontWeight = this.options[this.selectedIndex].value;
+    $('#download').disabled = true;
 }
