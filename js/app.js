@@ -1,0 +1,68 @@
+const $ = e => document.querySelector(e);
+
+const quotesInput = $('#quotes-input');
+const nameInput = $('#name-input');
+const quotes = $('#quotes');
+const name = $('#name');
+const BG = $('.bg');
+
+$('#generate').onclick = function () {
+    const newQuotes = quotesInput.value;
+    const newName = nameInput.value;
+    if (newQuotes.match(/\w/) || newName.match(/\w/)) {
+        quotes.innerHTML = newQuotes;
+        name.innerHTML = newName;
+    }
+}
+//random BG
+function randomBG() {
+    var randomBG = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
+    BG.style.background = randomBG;
+}
+//randomBG on page load
+randomBG();
+$('#change-bg').onclick = function () {
+    randomBG();
+}
+BG.onclick = function () {
+    randomBG();
+    $('#download').disabled = true;
+}
+$('#save').onclick = function () {
+    html2canvas(BG, { x: BG.offsetLeft, y: BG.offsetTop }).then((canvas) => {
+        const imgData = canvas.toDataURL();
+        $('a').href = imgData;
+    })
+    $('#download').disabled = false;
+}
+
+//font size
+$('#fontSlider').oninput = function () {
+    $('#download').disabled = true;
+    const fontSize = this.value + 'px';
+    quotes.style.fontSize = fontSize;
+}
+quotes.style.fontSize = $('#fontSlider').value + 'px';
+
+//reset download btn
+document.querySelectorAll('textarea').forEach(textarea => {
+    textarea.oninput = function () {
+        $('#download').disabled = true;
+        $('#generate').disabled = false;
+    }
+})
+
+//change font color
+$('.color-white').onclick = function () {
+    BG.style.color = "white";
+}
+$('.color-default').onclick = function () {
+    BG.style.color = "black";
+}
+//fontfamily
+const fontList = $('#fontFamily');
+fontList.oninput = function () {
+    const fontFamily = fontList.options[fontList.selectedIndex].value;
+    quotes.style.fontFamily = fontFamily;
+    name.style.fontFamily = fontFamily;
+}

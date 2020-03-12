@@ -1,0 +1,21 @@
+textarea {
+    width: 100%;
+}
+
+.container {
+    margin-top: 2rem;
+}
+
+.bg {
+    background: coral;
+    text-align: center;
+    padding: 1rem;
+}
+
+#generate {
+    margin-bottom: 2rem;
+}
+
+a {
+    text-decoration: none;
+}
