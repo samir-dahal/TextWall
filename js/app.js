@@ -85,3 +85,21 @@ fontWeightList.oninput = function () {
     quotes.style.fontWeight = this.options[this.selectedIndex].value;
     $('#download').disabled = true;
 }
+
+//dat gui
+var BGColor = function () {
+    this.BackGround = "#ffae23";
+};
+window.onload = function () {
+
+    var BG_text = new BGColor();
+    var gui = new dat.GUI();
+    gui.close();
+    $('.close-button').textContent = 'Tap here to change BG color';
+    gui.domElement.id = 'gui';
+    var changedColor = gui.addColor(BG_text, 'BackGround');
+    changedColor.__onFinishChange = function () {
+        BG.style.background = changedColor.object.BackGround;
+    }
+
+};
