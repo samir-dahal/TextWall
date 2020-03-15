@@ -87,19 +87,28 @@ fontWeightList.oninput = function () {
 }
 
 //dat gui
-var BGColor = function () {
-    this.BackGround = "#ffae23";
-};
-window.onload = function () {
+var randomColor = "#000000".replace(/0/g, function () { return (~~(Math.random() * 16)).toString(16); });
 
-    var BG_text = new BGColor();
-    var gui = new dat.GUI();
-    gui.close();
-    $('.close-button').textContent = 'Tap here to change BG color';
-    gui.domElement.id = 'gui';
-    var changedColor = gui.addColor(BG_text, 'BackGround');
-    changedColor.__onFinishChange = function () {
-        BG.style.background = changedColor.object.BackGround;
-    }
+const color = {
+    Quotes: '#000000',
+    BackGround: randomColor,
+    Name: '#000000'
+}
+const gui = new dat.GUI();
+const BGColor = gui.addColor(color, 'BackGround');
+const QuotesColor = gui.addColor(color, 'Quotes');
+const NameColor = gui.addColor(color, 'Name');
+//initial gui
+gui.close();
+BG.style.background = color.BackGround;
 
-};
+//onchange
+BGColor.__onFinishChange = function () {
+    BG.style.background = this.object.BackGround;
+}
+QuotesColor.__onFinishChange = function () {
+    quotes.style.color = this.object.Quotes;
+}
+NameColor.__onFinishChange = function () {
+    name.style.color = this.object.Name;
+}

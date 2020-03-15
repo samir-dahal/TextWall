@@ -21,8 +21,6 @@ a {
     text-decoration: none;
 }
 
-#gui {
-    position: absolute;
-    top: 0;
-    left: 0;
+input {
+    height: 20px;
 }
