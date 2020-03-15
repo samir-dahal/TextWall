@@ -100,8 +100,10 @@ const gui = new dat.GUI();
 const BGColor = gui.addColor(color, 'BackGround');
 const QuotesColor = gui.addColor(color, 'Quotes');
 const NameColor = gui.addColor(color, 'Name');
+
 //initial gui
 gui.close();
+$('.close-button').textContent = 'Tap to open color controllers';
 BG.style.background = color.BackGround;
 
 //onchange
