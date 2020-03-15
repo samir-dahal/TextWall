@@ -61,10 +61,12 @@ document.querySelectorAll('textarea').forEach(textarea => {
 
 //change font color
 $('.color-white').onclick = function () {
-    BG.style.color = "white";
+    quotes.style.color = "white";
+    name.style.color = 'white';
 }
 $('.color-default').onclick = function () {
-    BG.style.color = "black";
+    quotes.style.color = "black";
+    name.style.color = 'black';
 }
 //fontfamily
 const fontList = $('#fontFamily');
